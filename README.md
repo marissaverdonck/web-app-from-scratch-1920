@@ -1,5 +1,10 @@
 # Snow hunters
 
+Ik ben gek op skiën! Wanneer er verse sneeuw valt in de Alpen rijd ik het liefste direct heen, al is het voor een weekendje. Van te voren zoek ik naar het dichtstbijzijnde gebied met de meeste sneeuw. Ook moet er nog plek zijn in pensions/hotels. Dit is veel werk om uit te zoeken dus het zou handig zijn als ik hier een webapp voor bouw!
+
+" Waar vind je zo dichtbij mogelijk verse sneeuw om te kunnen skien?"
+
+
 ## Actor Diagram
 <img width="783" alt="Schermafbeelding 2020-02-10 om 14 05 16" src="https://user-images.githubusercontent.com/43657951/74152457-a2096800-4c0e-11ea-979f-6a00e36e4c8d.png">
 
