@@ -1,3 +1,14 @@
+# Snow hunters
+
+## Actor Diagram
+<img width="783" alt="Schermafbeelding 2020-02-10 om 14 05 16" src="https://user-images.githubusercontent.com/43657951/74152457-a2096800-4c0e-11ea-979f-6a00e36e4c8d.png">
+
+## Interaction Diagram
+<img width="813" alt="Schermafbeelding 2020-02-10 om 14 05 29" src="https://user-images.githubusercontent.com/43657951/74152404-8736f380-4c0e-11ea-9fb3-411f6f0483ed.png">
+
+
+
+
 # Web App From Scratch @cmda-minor-web 1819
 
 In this course you will learn to build a web application without frameworks or unnecessary libraries, but with vanilla HTML, CSS & JavaScript as much as possible. The end result is a modular, single page web app (SPA). Data will be retrieved from an external API of your choice, manipulated and finally shown in the UI of the App. You will learn different ways to structure code and develope your own coding style. With the gained knowledge you will be able to build interactive prototypes, based on real data. Also you will gain a better understanding of the how API's, frameworks and libraries work.
