@@ -23,7 +23,8 @@ Git clone https://github.com/marissaverdonck/web-app-from-scratch-1920.git
 ## API's 
 * Dark Sky weather
 * Ski area's around the world
-* Google maps
+* Google maps - Distance Matrix API
+
 
 ## Data
 
