@@ -25,11 +25,15 @@ Git clone https://github.com/marissaverdonck/web-app-from-scratch-1920.git
 
 ## Data
 
-## Actor Diagram
-<img width="783" alt="Schermafbeelding 2020-02-10 om 14 05 16" src="https://user-images.githubusercontent.com/43657951/74152457-a2096800-4c0e-11ea-979f-6a00e36e4c8d.png">
 
-## Interaction Diagram
-<img width="813" alt="Schermafbeelding 2020-02-10 om 14 05 29" src="https://user-images.githubusercontent.com/43657951/74152404-8736f380-4c0e-11ea-9fb3-411f6f0483ed.png">
+
+## Actor diagram
+<img width="900" alt="Schermafbeelding 2020-02-11 om 14 10 42" src="https://user-images.githubusercontent.com/43657951/74239582-69ce5c00-4cd8-11ea-8044-7c39c6c4b7ae.png">
+
+## Interaction diagram
+
+<img width="900" alt="Schermafbeelding 2020-02-11 om 14 12 44" src="https://user-images.githubusercontent.com/43657951/74239675-a13d0880-4cd8-11ea-87dd-b4268fcf4c21.png">
+
 
 ## Credits
 
