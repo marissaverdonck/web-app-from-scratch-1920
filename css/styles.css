@@ -99,38 +99,18 @@ footer {
 
 body {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
   background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143));
+  background-attachment: fixed;
   font-family: sans-serif;
   color: white;
+  padding: 1em;
 }
 
-.location,
-.temperature {
-  height: 30vh;
-  width: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+h1 {
+  text-align: center;
+  margin: 1em;
 }
 
-.temperature {
-  flex-direction: column;
-}
-
-.degree-section {
-  display: flex;
-  align-items: center
-}
-
-.degree-section span {
-  margin: 10px;
-  font-size: 30px;
-}
-
-.degree-section h2 {
-  font-size: 40px;
+ul {
+  margin: 1em;
 }
