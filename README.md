@@ -21,7 +21,7 @@ Git clone https://github.com/marissaverdonck/web-app-from-scratch-1920.git
 ```
 
 ## API's 
-* Dark Sky weather
+* Dark Sky weather API
 * Ski area's around the world
 * Google maps - Distance Matrix API
 
@@ -38,31 +38,21 @@ Git clone https://github.com/marissaverdonck/web-app-from-scratch-1920.git
 
 ## Feature recuirements
 
-* Retrieve data from an API and render it in an overview page.
-
-_[Excercises](https://github.com/cmda-minor-web/web-app-from-scratch-1920/blob/master/course/week-1.md)_
-
-_[Slides](https://drive.google.com/open?id=1Rjl9xqXoKniQSRJPdkU1O5YwWC33SJK8KiV0a-H_xZU)_
+* Retrieve data from an API and render it in an overview page. (_[Excercises](https://github.com/cmda-minor-web/web-app-from-scratch-1920/blob/master/course/week-1.md)_,
+_[Slides](https://drive.google.com/open?id=1Rjl9xqXoKniQSRJPdkU1O5YwWC33SJK8KiV0a-H_xZU)_)
 
 
-* Design the web app. Add routes and states. Rendering detail page.
+* Design the web app. Add routes and states. Rendering detail page. (_[Excercises](https://github.com/cmda-minor-web/web-app-from-scratch-1920/blob/master/course/week-2.md)_,
+_[Slides](https://drive.google.com/open?id=1IqQeu1m0dQiSC_KCvrn8eencAgtYe7X6qT-gm0n9Bmc)_)
 
-_[Excercises](https://github.com/cmda-minor-web/web-app-from-scratch-1920/blob/master/course/week-2.md)_
-
-_[Slides](https://drive.google.com/open?id=1IqQeu1m0dQiSC_KCvrn8eencAgtYe7X6qT-gm0n9Bmc)_
-
-* Manipulate data. Split code into modules. Reflect on end result
-
-_[Excercises](https://github.com/cmda-minor-web/web-app-from-scratch-1920/blob/master/course/week-3.md)_
-
-_[Slides](https://drive.google.com/open?id=1BSzGYNLMgtHD4HRnK7f0DgyTv4Pg3xsQwD_eYNo7v0Y)_
+* Manipulate data. Split code into modules. Reflect on end result. (_[Excercises](https://github.com/cmda-minor-web/web-app-from-scratch-1920/blob/master/course/week-3.md)_, 
+_[Slides](https://drive.google.com/open?id=1BSzGYNLMgtHD4HRnK7f0DgyTv4Pg3xsQwD_eYNo7v0Y)_)
 
 
 ## Extra features
 
 
 ## Learning goals
-
 * _You can add structure to your code by applying patterns. You can defend the choice for the chosen patterns_
 * _You can retrieve data, manipulate it and dynamically convert it to html elements using templating_
 * _You understand how you can work with an external API using asynchronous code_
@@ -71,7 +61,7 @@ _[Slides](https://drive.google.com/open?id=1BSzGYNLMgtHD4HRnK7f0DgyTv4Pg3xsQwD_e
 ## Credits
 
 ## License
-[MIT License](https://github.com/marissaverdonck/functional-programming/blob/master/license)
+[MIT License](https://github.com/marissaverdonck/web-app-from-cratch/blob/master/license)
 
 
 
