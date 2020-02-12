@@ -51,6 +51,9 @@ _[Slides](https://drive.google.com/open?id=1BSzGYNLMgtHD4HRnK7f0DgyTv4Pg3xsQwD_e
 
 ## Extra features
 
+## WishList
+* De optie om een hotel te boeken
+
 
 ## Learning goals
 * _You can add structure to your code by applying patterns. You can defend the choice for the chosen patterns_
