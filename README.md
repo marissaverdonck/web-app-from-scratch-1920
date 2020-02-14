@@ -35,9 +35,40 @@ Git clone https://github.com/marissaverdonck/web-app-from-scratch-1920.git
 ```
 
 ## API's 
-* Dark Sky weather API
-* Ski area's around the world
-* Google maps - Distance Matrix API
+### Dark Sky weather API
+Website: https://darksky.net/dev
+
+<details>
+    <summary>Titel</summary>
+
+    ```json
+    data
+    ```
+
+</details>
+
+### Ski area's around the world
+Website: https://skimap.org/pages/Developers#skiArea
+
+<details>
+    <summary>Titel</summary>
+
+    ```json
+    data
+    ```
+
+</details>
+
+### Google maps - Distance Matrix API
+Website: https://developers.google.com/maps/documentation/distance-matrix/intro
+
+<details>
+    <summary>Titel</summary>
+
+    ```json
+    data
+    ```
+</details>
 
 
 ## Data
