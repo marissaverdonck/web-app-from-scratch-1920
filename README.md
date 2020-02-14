@@ -39,7 +39,7 @@ Git clone https://github.com/marissaverdonck/web-app-from-scratch-1920.git
 Website: https://darksky.net/dev
 
 <details>
-    <summary>Titel</summary>
+    <summary>Weather data</summary>
 
     ```json
     data
@@ -51,7 +51,7 @@ Website: https://darksky.net/dev
 Website: https://skimap.org/pages/Developers#skiArea
 
 <details>
-    <summary>Titel</summary>
+    <summary>Skiarea data</summary>
 
     ```json
     data
@@ -63,7 +63,7 @@ Website: https://skimap.org/pages/Developers#skiArea
 Website: https://developers.google.com/maps/documentation/distance-matrix/intro
 
 <details>
-    <summary>Titel</summary>
+    <summary>Distance data</summary>
 
     ```json
     data
@@ -74,6 +74,7 @@ Website: https://developers.google.com/maps/documentation/distance-matrix/intro
 ## Data
 
 ## How it works
+Visuele weergave over hoe de applicatie werkt.
 
 ### Actor diagram
 <img width="900" alt="Schermafbeelding 2020-02-11 om 14 10 42" src="https://user-images.githubusercontent.com/43657951/74239582-69ce5c00-4cd8-11ea-8044-7c39c6c4b7ae.png">
