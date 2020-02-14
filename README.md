@@ -1,11 +1,25 @@
 # Snow hunters
+Een weer app voor alle skigebieden over de wereld. Waar vind je zo dicht bij mogelijk de meeste sneeuw?
+
+## Table of Contents
+* [Concept](#Concept)
+* [Onderzoek](#Onderzoek)
+* [Installatie](#Installatie)
+* [API's](#API's)
+* [Data](#Data)
+* [How it works](#How-it-works)
+  * [Actor diagram](#Actor-diagram)
+  * [Interaction diagram](#Interaction-diagram)
+* [Feature requirements](#Feature-requirements)
+* [Extra Features](#Extra-Features)
+* [Wishlist](#Wishlist)
+* [Learning goals](#Learning-goals)
+* [Credits](#Credits)
+* [License](#License)
 
 ## Concept
 
 Ik ben gek op skiën! Wanneer er verse sneeuw valt in de Alpen rijd ik het liefste direct heen, al is het voor een weekendje. Van te voren zoek ik naar het dichtstbijzijnde gebied met de meeste sneeuw. Dit is veel werk om uit te zoeken dus het zou handig zijn als ik hier een webapp voor bouw!
-
-_In this course you will learn to build a web application without frameworks or unnecessary libraries, but with vanilla HTML, CSS & JavaScript as much as possible. The end result is a modular, single page web app (SPA). Data will be retrieved from an external API of your choice, manipulated and finally shown in the UI of the App. You will learn different ways to structure code and develope your own coding style. With the gained knowledge you will be able to build interactive prototypes, based on real data. Also you will gain a better understanding of the how API's, frameworks and libraries work._
-
 
 ## Onderzoek
 Bekijk hoe ik op dit idee gekomen ben en zie het onderzoek in de [Wiki](https://github.com/marissaverdonck/web-app-from-scratch-1920/wiki)
@@ -28,11 +42,12 @@ Git clone https://github.com/marissaverdonck/web-app-from-scratch-1920.git
 
 ## Data
 
+## How it works
 
-## Actor diagram
+### Actor diagram
 <img width="900" alt="Schermafbeelding 2020-02-11 om 14 10 42" src="https://user-images.githubusercontent.com/43657951/74239582-69ce5c00-4cd8-11ea-8044-7c39c6c4b7ae.png">
 
-## Interaction diagram
+### Interaction diagram
 
 <img width="900" alt="Schermafbeelding 2020-02-11 om 14 12 44" src="https://user-images.githubusercontent.com/43657951/74239675-a13d0880-4cd8-11ea-87dd-b4268fcf4c21.png">
 
