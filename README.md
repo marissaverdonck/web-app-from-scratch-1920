@@ -3,6 +3,7 @@ Een weer app voor alle skigebieden over de wereld. Waar vind je zo dicht bij mog
 
 ## Table of Contents
 * [Concept](#Concept)
+* [Live Desom](#Love-Demo)
 * [Onderzoek](#Onderzoek)
 * [Installatie](#Installatie)
 * [API's](#API's)
@@ -20,6 +21,9 @@ Een weer app voor alle skigebieden over de wereld. Waar vind je zo dicht bij mog
 ## Concept
 
 Ik ben gek op skiën! Wanneer er verse sneeuw valt in de Alpen rijd ik het liefste direct heen, al is het voor een weekendje. Van te voren zoek ik naar het dichtstbijzijnde gebied met de meeste sneeuw. Dit is veel werk om uit te zoeken dus het zou handig zijn als ik hier een webapp voor bouw!
+
+## Live Demo
+https://marissaverdonck.github.io/web-app-from-scratch-1920/
 
 ## Onderzoek
 Bekijk hoe ik op dit idee gekomen ben en zie het onderzoek in de [Wiki](https://github.com/marissaverdonck/web-app-from-scratch-1920/wiki)
