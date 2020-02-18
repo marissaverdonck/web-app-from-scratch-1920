@@ -91,6 +91,21 @@ footer {
   font-style: italic;
 } */
 
+@font-face {
+  font-family: DinCondensed;
+  src: url('DINCondensed-Bold.ttf')
+}
+
+@font-face {
+  font-family: Ailerons;
+  src: url('Ailerons-Typeface.ttf')
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url('Avenir_Light.ttf')
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -99,18 +114,89 @@ footer {
 
 body {
   height: 100vh;
-  background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143));
+  background-color: #f6f6f6;
+  background-image: url(/img/mountain.png);
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: top;
+  background-size: cover;
   font-family: sans-serif;
   color: white;
   padding: 1em;
 }
 
+main {
+  background-color: #9db6bcde;
+  padding: 1em;
+  margin: 0 auto;
+  width: 90%;
+}
+
 h1 {
+  font-family: DinCondensed, serif;
+  font-size: 17vw;
+  text-transform: uppercase;
   text-align: center;
-  margin: 1em;
+  margin: 5vw 0 0 0;
+  padding: 0;
+  color: #3a4e55;
+}
+
+h2 {
+  font-family: Ailerons, sans-serif;
+  font-size: 5.5vw;
+  color: #3a4e55;
+  text-align: center;
+  margin: 0 0 10vw 0;
+  padding: 0;
+}
+
+h3 {
+  font-family: DinCondensed, serif;
+  font-size: 3em;
+  color: #b86935;
+}
+
+h4 {
+  font-family: DinCondensed, serif;
+  font-size: 2em;
+  color: #ffffff;
+}
+
+p {
+  font-family: Avenir, sans-serif;
+  color: #ffffff;
+  font-size: 1em;
 }
 
 ul {
   margin: 1em;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#results article {
+  border-bottom: 1px solid #ffffff;
+  padding: 0em 0 2em 0;
+  margin: 2em 0 2em 0;
+}
+
+section {
+  margin: 1em 0;
+}
+
+@media screen and (min-width: 60em) {
+  h1 {
+    font-size: 11em
+  }
+  h2 {
+    font-size: 3.3em
+  }
 }
