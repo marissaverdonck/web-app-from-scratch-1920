@@ -1,42 +1,39 @@
 import skiarea from './skiareas.js';
-
-
-const userLocation = document.querySelector('#userLocation')
 const listSkiAreas = document.querySelector('#listSkiAreas')
-
-// Get the location from the user
-
-
-
-
-
-
-
-
+const loadmorebutton = document.querySelector('#loadmore');
+console.log(skiarea)
 
 // Get the location from the user
 function findUserLocation() {
+  const cors = 'https://cors-anywhere.herokuapp.com/'
+  const url = 'https://api.darksky.net/forecast/'
+  const key = '43d7f14e28e4ad05109359319da1a156'
+  const key2 = '6b0215f3cade32440e76bd5a8c70e909'
+  const key3 = '41b9df401599f007aff98cfa0c66811d'
+  const key4 = 'cc468fa2e1d6646e5d249e3cb27b48ed'
+    // units is voor celsius en km
+  const units = '?units=si'
   const userLocation = document.querySelector('#userLocation')
 
   function success(position) {
-    let currentLat = position.coords.latitude;
-    let currentLon = position.coords.longitude;
-    userLocation.textContent = currentLat + ', ' + currentLon + '. Getting location name...';
+    const currentLat = position.coords.latitude;
+    const currentLon = position.coords.longitude;
+    userLocation.textContent = currentLat + ', ' + currentLon + '. Waiting for location name...';
     getTimeZone(currentLat, currentLon)
   }
 
   function error() {
     userLocation.textContent = 'Unable to retrieve your location'
-    let currentLat = 52.347488;
-    let currentLon = 4.917522;
-    getDistanceSkiareas(currentLat, currentLon)
+    const currentLat = 52.347488;
+    const currentLon = 4.917522;
+    calculateDistance(currentLat, currentLon)
   }
 
   if (!navigator.geolocation) {
     userLocation.textContent = 'Geolocation is not supported by your browser'
-    let currentLat = 52.347488;
-    let currentLon = 4.917522;
-    getDistanceSkiareas(currentLat, currentLon)
+    const currentLat = 52.347488;
+    const currentLon = 4.917522;
+    calculateDistance(currentLat, currentLon)
 
   } else {
     userLocation.textContent = 'locating...'
@@ -45,45 +42,18 @@ function findUserLocation() {
 
   //Get the location name from DarkSky
   function getTimeZone(currentLat, currentLon) {
-    fetch(`${cors}${url}${key2}/${currentLat},${currentLon}${units}`)
+    fetch(`${cors}${url}${key4}/${currentLat},${currentLon}${units}`)
       .then((response) => {
         return response.json();
       })
       .then((userTime) => {
         // Set the name of the user location
         userLocation.textContent = `${userTime.timezone}`
-        getDistanceSkiareas(currentLat, currentLon)
+        calculateDistance(currentLat, currentLon)
       });
   }
 }
-
 window.addEventListener("load", findUserLocation)
-
-
-
-
-
-
-
-// Get the location from the user
-// window.addEventListener("load", () => {
-//   let currentLat;
-//   let currentLong;
-//   let currentLatLong;
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(position => {
-//       currentLatLong = position.coords.latitude + ',' + position.coords.longitude
-//       currentLat = position.coords.latitude;
-//       currentLong = position.coords.longitude;
-//       // calculateDistance(currentLatLong)
-//       getTimeZone(currentLatLong)
-//       getDistanceSkiareas(currentLat, currentLong)
-//       return { currentLat, currentLong, currentLatLong }
-//     });
-//   } else {
-//     alert("Hello! I am an alert box!!");
-//   }
-// })
 
 // Get distance from Google
 // Key van Coen. Niet uploaden naar Github zonder .env!!
@@ -100,10 +70,8 @@ window.addEventListener("load", findUserLocation)
 // }
 
 //  bron: http://www.movable-type.co.uk/scripts/latlong.html
-
-
-function getDistanceSkiareas(currentLat, currentLon) {
-  let skiareasWithDistance = skiarea.skiAreas.skiArea.map(skiarea => {
+function calculateDistance(currentLat, currentLon) {
+  const locationArray = skiarea.skiAreas.skiArea.map((skiarea, index, array) => {
     const lat1 = currentLat;
     const lon1 = currentLon;
     // check if there is data in georeferencing
@@ -112,15 +80,15 @@ function getDistanceSkiareas(currentLat, currentLon) {
 
     // If there is data found, go further
     if (lon2 !== null) {
-      var R = 6371; // Radius of the earth in km
-      var dLat = deg2rad(lat2 - lat1); // deg2rad below
-      var dLon = deg2rad(lon2 - lon1);
-      var a =
+      const R = 6371; // Radius of the earth in km
+      const dLat = deg2rad(lat2 - lat1); // deg2rad below
+      const dLon = deg2rad(lon2 - lon1);
+      const a =
         Math.sin(dLat / 2) * Math.sin(dLat / 2) +
         Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
         Math.sin(dLon / 2) * Math.sin(dLon / 2);
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      var d = R * c; // Distance in km
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      const d = R * c; // Distance in km
 
       function deg2rad(deg) {
         return deg * (Math.PI / 180)
@@ -134,90 +102,113 @@ function getDistanceSkiareas(currentLat, currentLon) {
         lon: skiarea.georeferencing._lng,
         distance: Number(d.toFixed(1))
       }
-
     }
   })
-  filterAndSortSkiareas(skiareasWithDistance)
+  filterAndSortLocations(locationArray)
 }
 
-
-function filterAndSortSkiareas(skiareasWithDistance) {
-  var filteredAreas = skiareasWithDistance.filter(
-    function(skiareasWithDistance) {
-      const distance = skiareasWithDistance ? skiareasWithDistance.distance : null
-      const newdata = distance >= 940 && distance <= 950;
+function filterAndSortLocations(locationArray) {
+  const filteredAreas = locationArray.filter(
+    function(locationArray) {
+      const distance = locationArray ? locationArray.distance : null
+      const newdata = distance >= 0 && distance <= 100;
       return newdata
     });
-  var filteredAndSortAreas = filteredAreas.sort((a, b) => (a.distance - b.distance))
-
-  // console.log(filteredAreas)
-
-
-  // renderData(filteredAndSortAreas)
-  renderData(filteredAndSortAreas)
+  const filteredSortedLocations = filteredAreas.sort((a, b) => (b.distance - a.distance))
+  getWeather(filteredSortedLocations)
 }
 
-
-
-
-const cors = 'https://cors-anywhere.herokuapp.com/'
-const url = 'https://api.darksky.net/forecast/'
-var key = '43d7f14e28e4ad05109359319da1a156'
-var key2 = '6b0215f3cade32440e76bd5a8c70e909'
-  // units is voor celsius en km
-const units = '?units=si'
-
-
-function renderData(filteredAndSortAreas) {
-  filteredAndSortAreas.reduce(function(acc, cur, ind) {
+function getWeather(filteredSortedLocations) {
+  const endOfResultList = document.querySelector('ul')
+  const cors = 'https://cors-anywhere.herokuapp.com/'
+  const url = 'https://api.darksky.net/forecast/'
+  const key = '43d7f14e28e4ad05109359319da1a156'
+  const key2 = '6b0215f3cade32440e76bd5a8c70e909'
+  const key3 = '41b9df401599f007aff98cfa0c66811d'
+  const key4 = 'cc468fa2e1d6646e5d249e3cb27b48ed'
+    // units is voor celsius en km
+  const units = '?units=si'
+  filteredSortedLocations.reduce(function(acc, cur, ind) {
     //render 10 items because of limit weather app
-    if (ind < 10) {
-      fetch(`${cors}${url}${key}/${cur.lat},${cur.lon}${units}`)
+
+    if (ind < 2) {
+      fetch(`${cors}${url}${key4}/${cur.lat},${cur.lon}${units}`)
         .then((response) => {
           return response.json();
         })
         .then((weatherData) => {
           console.log(weatherData)
+
           listSkiAreas.insertAdjacentHTML('afterbegin', `
           <li id="id${cur.id}">
           <a href="#id${cur.id}">
+
           <article>
           <h4>${cur.name}, ${cur.regio}</h4>
-          <p>Distance:${cur.distance}km</p>
+
+          <div>
+          <p>Distance: ${cur.distance}km</p>
+          <p>Temperature: ${Math.floor(weatherData.currently.temperature)}˚C</p>
+          </div>
+
           <div class="weather">
-          <p>temperature: ${weatherData.currently.temperature}˚C</p>
-          <p>${weatherData.currently.icon}</p>
+          <canvas id="currentIcon" width="128" height"128">${weatherData.currently.icon}</canvas> 
+          </div>
+
+          <div>
+          <h5>Next hours</h5>
+          <article>
+          <p>${convertUnix(weatherData.hourly.data[0].time)}</p> 
+          <canvas id="iconH1" >${weatherData.hourly.data[0].icon}</canvas> 
+          <p>${Math.floor(weatherData.hourly.data[0].temperature)}˚C</p>
+
+          </article>
+
+          <article>
+          <p>${convertUnix(weatherData.hourly.data[3].time)}</p> 
+          <canvas id="iconH2">${weatherData.hourly.data[3].icon}</canvas> 
+          <p>${Math.floor(weatherData.hourly.data[3].temperature)}˚C</p>
+          </article>
+
+          <article>
+          <p>${convertUnix(weatherData.hourly.data[6].time)}</p> 
+          <canvas id="iconH3">${weatherData.hourly.data[6].icon}</canvas> 
+          <p>${Math.floor(weatherData.hourly.data[6].temperature)}˚C</p>     
           </div>
           </article>
+
+          </article>
           </a>
-          </li>`)
+          </li>
+         `)
+          setIcons(weatherData.currently.icon, document.querySelector('#currentIcon'))
+          setIcons(weatherData.hourly.data[0].icon, document.querySelector('#iconH1'))
+          setIcons(weatherData.hourly.data[3].icon, document.querySelector('#iconH2'))
+          setIcons(weatherData.hourly.data[6].icon, document.querySelector('#iconH3'))
         })
     }
   }, 0)
+  loadmorebutton.classList.add('show')
 }
-
-
 
 // Set unix to Time
 // bron: https://makitweb.com/convert-unix-timestamp-to-date-time-with-javascript/
-function convertUnix() {
-  var unixtimestamp = 1580770800;
-  var months_arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  var date = new Date(unixtimestamp * 1000);
-  var year = date.getFullYear();
-  var month = months_arr[date.getMonth()];
-  var day = date.getDate();
-  var hours = date.getHours();
-  var minutes = "0" + date.getMinutes();
-  var seconds = "0" + date.getSeconds();
+function convertUnix(unixtimestamp) {
+  const months_arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const date = new Date(unixtimestamp * 1000);
+  const year = date.getFullYear();
+  const month = months_arr[date.getMonth()];
+  const day = date.getDate();
+  const hours = date.getHours();
+  const minutes = "0" + date.getMinutes();
+  const seconds = "0" + date.getSeconds();
   // Display date time in MM-dd-yyyy h:m:s format
-  var convdataTime = month + '-' + day + '-' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-  console.log(convdataTime)
+  const convdataTime = month + '-' + day + '-' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+  const time = hours + ':' + minutes.substr(-2);
+  return time
 }
 
-
 routie({
-
   'id:id': id => {
     console.log(id)
     showDetails(id)
@@ -226,7 +217,6 @@ routie({
     console.log(id)
   }
 });
-
 
 function showDetails(id) {
   const activeArticle = document.querySelector(`#id${id}`);
@@ -237,4 +227,12 @@ function showDetails(id) {
     activeArticle.classList.add('active')
 
   }
+}
+
+// Bron: https://www.youtube.com/watch?v=wPElVpR1rwA
+function setIcons(icon, iconID) {
+  const skycons = new Skycons({ color: "white" });
+  const currentIcon = icon.replace(/-/g, "_").toUpperCase();
+  skycons.play();
+  return skycons.set(iconID, Skycons[currentIcon]);
 }
