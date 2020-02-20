@@ -130,6 +130,24 @@ button {
   flex-wrap: wrap;
 }
 
+#results form {
+  background-color: #3a4e5561;
+  padding: 1em;
+}
+
+#results form label {
+  font-family: Avenir, sans-serif;
+  color: #ffffff;
+  font-size: 1em;
+  display: block;
+}
+
+#results form input {
+  font-family: Avenir, sans-serif;
+  border: none;
+  padding: .3em;
+}
+
 #results li {
   border-bottom: 1px solid #ffffff;
   padding: 0em 0 2em 0;

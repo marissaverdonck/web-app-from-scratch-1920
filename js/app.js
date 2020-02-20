@@ -3,6 +3,13 @@ const listSkiAreas = document.querySelector('#listSkiAreas')
 const loadmorebutton = document.querySelector('#loadmore');
 console.log(skiarea)
 
+
+
+
+
+
+
+
 // Get the location from the user
 function findUserLocation() {
   const cors = 'https://cors-anywhere.herokuapp.com/'
@@ -104,18 +111,54 @@ function calculateDistance(currentLat, currentLon) {
       }
     }
   })
-  filterAndSortLocations(locationArray)
+
+  localStorage.setItem('locationArray', JSON.stringify(locationArray))
+  console.log(locationArray)
+  getValueFromFilter(locationArray)
 }
 
-function filterAndSortLocations(locationArray) {
+
+const filterButton = document.getElementById("filterButton")
+filterButton.addEventListener("click", getValueFromFilter);
+
+function getValueFromFilter(locationArray) {
+  const filterInputMin = document.getElementById("min-distance").value;
+  const filterInputMax = document.getElementById("max-distance").value;
+  filterAndSortLocations(filterInputMin, filterInputMax, locationArray)
+}
+
+
+
+
+
+function filterAndSortLocations(filterInputMin, filterInputMax, locationArrayNew) {
+  const locationArrayString = localStorage.getItem('locationArray')
+  const locationParsedArray = JSON.parse(locationArrayString)
+    // Load from local storage. Not available? Load from calculateDistance()
+    // const locationArray = locationArrayNew;
+  const locationArray = locationParsedArray;
+  // const locationArray = locationParsedArray ? locationParsedArray : locationArrayNew;
+
+
+  const minDistance = filterInputMin ? filterInputMin : 0;
+  const maxDistance = filterInputMax ? filterInputMax : 1000;
+
   const filteredAreas = locationArray.filter(
+
     function(locationArray) {
-      const distance = locationArray ? locationArray.distance : null
-      const newdata = distance >= 0 && distance <= 100;
+      // Because of null values in the array, caused by stringify
+      const distance = (locationArray == null) ? locationArray = 'undefined' :
+        (locationArray.distance == null) ? locationArray.distance = 'undefined' :
+        locationArray.distance = locationArray.distance
+
+      const newdata = distance >= minDistance && distance <= maxDistance;
+      console.log(minDistance + ',' + maxDistance)
       return newdata
     });
-  const filteredSortedLocations = filteredAreas.sort((a, b) => (b.distance - a.distance))
+
+  const filteredSortedLocations = filteredAreas.sort((a, b) => (a.distance - b.distance))
   getWeather(filteredSortedLocations)
+  console.log(filteredSortedLocations)
 }
 
 function getWeather(filteredSortedLocations) {
@@ -131,7 +174,7 @@ function getWeather(filteredSortedLocations) {
   filteredSortedLocations.reduce(function(acc, cur, ind) {
     //render 10 items because of limit weather app
 
-    if (ind < 2) {
+    if (ind < 5) {
       fetch(`${cors}${url}${key4}/${cur.lat},${cur.lon}${units}`)
         .then((response) => {
           return response.json();
@@ -139,7 +182,7 @@ function getWeather(filteredSortedLocations) {
         .then((weatherData) => {
           console.log(weatherData)
 
-          listSkiAreas.insertAdjacentHTML('afterbegin', `
+          listSkiAreas.insertAdjacentHTML('beforeend', `
           <li id="id${cur.id}">
           <a href="#id${cur.id}">
 
@@ -152,27 +195,27 @@ function getWeather(filteredSortedLocations) {
           </div>
 
           <div class="weather">
-          <canvas id="currentIcon" width="128" height"128">${weatherData.currently.icon}</canvas> 
+          <canvas class="currentIcon" id=currentIcon${cur.id} width="128" height"128">${weatherData.currently.icon}</canvas> 
           </div>
 
           <div>
           <h5>Next hours</h5>
           <article>
           <p>${convertUnix(weatherData.hourly.data[0].time)}</p> 
-          <canvas id="iconH1" >${weatherData.hourly.data[0].icon}</canvas> 
+          <canvas class="iconH1" id=iconH1${cur.id}>${weatherData.hourly.data[0].icon}</canvas> 
           <p>${Math.floor(weatherData.hourly.data[0].temperature)}˚C</p>
 
           </article>
 
           <article>
           <p>${convertUnix(weatherData.hourly.data[3].time)}</p> 
-          <canvas id="iconH2">${weatherData.hourly.data[3].icon}</canvas> 
+          <canvas class="iconH2" id=iconH2${cur.id}>${weatherData.hourly.data[3].icon}</canvas> 
           <p>${Math.floor(weatherData.hourly.data[3].temperature)}˚C</p>
           </article>
 
           <article>
           <p>${convertUnix(weatherData.hourly.data[6].time)}</p> 
-          <canvas id="iconH3">${weatherData.hourly.data[6].icon}</canvas> 
+          <canvas class="iconH3" id=iconH3${cur.id}>${weatherData.hourly.data[6].icon}</canvas> 
           <p>${Math.floor(weatherData.hourly.data[6].temperature)}˚C</p>     
           </div>
           </article>
@@ -180,11 +223,14 @@ function getWeather(filteredSortedLocations) {
           </article>
           </a>
           </li>
-         `)
-          setIcons(weatherData.currently.icon, document.querySelector('#currentIcon'))
-          setIcons(weatherData.hourly.data[0].icon, document.querySelector('#iconH1'))
-          setIcons(weatherData.hourly.data[3].icon, document.querySelector('#iconH2'))
-          setIcons(weatherData.hourly.data[6].icon, document.querySelector('#iconH3'))
+          `)
+          console.log(ind)
+          console.log(document.querySelectorAll('.currentIcon').item(ind))
+          setIcons(weatherData.currently.icon, document.querySelectorAll('.currentIcon').item(ind))
+          setIcons(weatherData.hourly.data[0].icon, document.querySelectorAll('.iconH1').item(ind))
+          setIcons(weatherData.hourly.data[3].icon, document.querySelectorAll('.iconH2').item(ind))
+          setIcons(weatherData.hourly.data[6].icon, document.querySelectorAll('.iconH3').item(ind))
+
         })
     }
   }, 0)
