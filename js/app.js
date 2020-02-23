@@ -113,7 +113,6 @@ function calculateDistance(currentLat, currentLon) {
   })
 
   localStorage.setItem('locationArray', JSON.stringify(locationArray))
-  console.log(locationArray)
   getValueFromFilter(locationArray)
 }
 
@@ -157,9 +156,14 @@ function filterAndSortLocations(filterInputMin, filterInputMax, locationArrayNew
     });
 
   const filteredSortedLocations = filteredAreas.sort((a, b) => (a.distance - b.distance))
-  getWeather(filteredSortedLocations)
+    // getWeather(filteredSortedLocations)
   console.log(filteredSortedLocations)
+    // getWeather(filteredSortedLocations)
+  getWeather(filteredSortedLocations.slice(0, 5))
+  console.log(filteredSortedLocations.slice(0, 5))
 }
+
+
 
 function getWeather(filteredSortedLocations) {
   const endOfResultList = document.querySelector('ul')
@@ -174,15 +178,15 @@ function getWeather(filteredSortedLocations) {
   filteredSortedLocations.reduce(function(acc, cur, ind) {
     //render 10 items because of limit weather app
 
-    if (ind < 5) {
-      fetch(`${cors}${url}${key4}/${cur.lat},${cur.lon}${units}`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((weatherData) => {
-          console.log(weatherData)
 
-          listSkiAreas.insertAdjacentHTML('beforeend', `
+    fetch(`${cors}${url}${key4}/${cur.lat},${cur.lon}${units}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((weatherData) => {
+        console.log(weatherData)
+
+        listSkiAreas.insertAdjacentHTML('beforeend', `
           <li id="id${cur.id}">
           <a href="#id${cur.id}">
 
@@ -224,18 +228,209 @@ function getWeather(filteredSortedLocations) {
           </a>
           </li>
           `)
-          console.log(ind)
-          console.log(document.querySelectorAll('.currentIcon').item(ind))
-          setIcons(weatherData.currently.icon, document.querySelectorAll('.currentIcon').item(ind))
-          setIcons(weatherData.hourly.data[0].icon, document.querySelectorAll('.iconH1').item(ind))
-          setIcons(weatherData.hourly.data[3].icon, document.querySelectorAll('.iconH2').item(ind))
-          setIcons(weatherData.hourly.data[6].icon, document.querySelectorAll('.iconH3').item(ind))
+        console.log(ind)
+        console.log(document.querySelectorAll('.currentIcon').item(ind))
+        setIcons(weatherData.currently.icon, document.querySelectorAll('.currentIcon').item(ind))
+        setIcons(weatherData.hourly.data[0].icon, document.querySelectorAll('.iconH1').item(ind))
+        setIcons(weatherData.hourly.data[3].icon, document.querySelectorAll('.iconH2').item(ind))
+        setIcons(weatherData.hourly.data[6].icon, document.querySelectorAll('.iconH3').item(ind))
 
-        })
-    }
+      })
+
   }, 0)
   loadmorebutton.classList.add('show')
 }
+
+////////////////////////////////////////////////
+
+
+
+
+// function getWeather2(filteredSortedLocations) {
+//   const cors = 'https://cors-anywhere.herokuapp.com/'
+//   const url = 'https://api.darksky.net/forecast/'
+//   const key = '43d7f14e28e4ad05109359319da1a156'
+//   const key2 = '6b0215f3cade32440e76bd5a8c70e909'
+//   const key3 = '41b9df401599f007aff98cfa0c66811d'
+//     // units is voor celsius en km
+//   const units = '?units=si'
+
+//   const newArray = []
+//   filteredSortedLocations.forEach(cur =>
+
+
+//       fetch(`${cors}${url}${key3}/${cur.lat},${cur.lon}${units}`)
+//         .then((response) => {
+//           return response.json();
+//         })
+//         .then((weatherData) => {
+//           newArray.push({
+//             id: cur.id
+//           })
+//         })
+//     }
+
+
+//   )
+//   console.log(newArray)
+// }
+//   var x = []
+//   console.log(cur)
+//   fetch(`${cors}${url}${key3}/${cur.lat},${cur.lon}${units}`)
+//     .then((response) => {
+//       return response.json();
+//     })
+//     .then((weatherData) => {
+//       console.log(weatherData)
+//       x.push(weatherData)
+
+//     })
+
+//   console.log(x)
+// })
+
+// console.log(newArray)
+
+// }
+//   let weatherArray = filteredSortedLocations.reduce((acc, cur, index, array) => {
+
+//     acc[cur] = []
+
+
+
+
+//     if (index < 5) {
+
+// fetch(`${cors}${url}${key3}/${cur.lat},${cur.lon}${units}`)
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((weatherData) => {
+//     // console.log(weatherData)
+
+// acc.push({
+//   id: cur.id,
+
+// })
+
+
+// acc.push({
+//   id: cur.id,
+//   name: cur.name,
+//   regio: cur.regio,
+//   lat: cur.lat,
+//   lon: cur.lon,
+//   distance: cur.distance,
+
+//   weatherCurrentlyIcon: weatherData.currently.icon,
+//   weatherCurrentlyTemp: weatherData.currently.temperature,
+//   weatherHourlyIcon: weatherData.hourly.data[0].icon,
+//   weatherHourlyTemp: weatherData.hourly.data[0].temperature,
+//   weatherHourlyIcon: weatherData.hourly.data[3].icon,
+//   weatherHourlyTemp: weatherData.hourly.data[3].temperature,
+//   weatherHourlyIcon: weatherData.hourly.data[6].icon,
+//   weatherHourlyTemp: weatherData.hourly.data[6].temperature
+// })
+// })
+
+//     }
+
+//     return acc
+
+//   }, []);
+
+//   renderData(weatherArray)
+// }
+
+
+// function renderData(weatherArray) {
+//   console.log(weatherArray)
+//   weatherArray.reduce(function(acc, cur, index) {
+//     console.log(cur)
+
+
+
+//     listSkiAreas.insertAdjacentHTML('afterbegin', `
+//           <li id="id${cur.id}">
+//           <a href="#id${cur.id}">
+//           <article>
+//           <h4>${cur.name}, ${cur.regio}</h4>
+//           <p>Distance:${cur.distance}km</p>
+//           <div class="weather">
+//           <p>temperature: ${weatherData.currently.temperature}˚C</p>
+//           <p>${weatherData.currently.icon}</p>
+//           </div>
+//           </article>
+//           </a>
+//           </li>
+
+
+// weatherArray.insertAdjacentHTML('beforeend', `
+// <li id="id${cur.id}">
+// <a href="#id${cur.id}">
+
+// <article>
+// <h4>${cur.name}, ${cur.regio}</h4>
+
+// <div>
+// <p>Distance: ${cur.distance}km</p>
+// <p>Temperature: ${Math.floor(weatherData.currently.temperature)}˚C</p>
+// </div>
+
+// <div class="weather">
+// <canvas class="currentIcon" id=currentIcon${cur.id} width="128" height"128">${weatherData.currently.icon}</canvas> 
+// </div>
+
+// <div>
+// <h5>Next hours</h5>
+// <article>
+// <p>${convertUnix(weatherData.hourly.data[0].time)}</p> 
+// <canvas class="iconH1" id=iconH1${cur.id}>${weatherData.hourly.data[0].icon}</canvas> 
+// <p>${Math.floor(weatherData.hourly.data[0].temperature)}˚C</p>
+
+// </article>
+
+// <article>
+// <p>${convertUnix(weatherData.hourly.data[3].time)}</p> 
+// <canvas class="iconH2" id=iconH2${cur.id}>${weatherData.hourly.data[3].icon}</canvas> 
+// <p>${Math.floor(weatherData.hourly.data[3].temperature)}˚C</p>
+// </article>
+
+// <article>
+// <p>${convertUnix(weatherData.hourly.data[6].time)}</p> 
+// <canvas class="iconH3" id=iconH3${cur.id}>${weatherData.hourly.data[6].icon}</canvas> 
+// <p>${Math.floor(weatherData.hourly.data[6].temperature)}˚C</p>     
+// </div>
+// </article>
+
+// </article>
+// </a>
+// </li>
+// `)
+// console.log(index)
+// console.log(document.querySelectorAll('.currentIcon').item(ind))
+// setIcons(weatherData.currently.icon, document.querySelectorAll('.currentIcon').item(ind))
+// setIcons(weatherData.hourly.data[0].icon, document.querySelectorAll('.iconH1').item(ind))
+// setIcons(weatherData.hourly.data[3].icon, document.querySelectorAll('.iconH2').item(ind))
+// setIcons(weatherData.hourly.data[6].icon, document.querySelectorAll('.iconH3').item(ind))
+
+
+//   }, 0)
+
+// }
+
+
+
+////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
 
 // Set unix to Time
 // bron: https://makitweb.com/convert-unix-timestamp-to-date-time-with-javascript/
