@@ -68,7 +68,7 @@ h3 {
 h4 {
   font-family: DinCondensed, serif;
   font-size: 1.5em;
-  color: #d27c37;
+  color: #ffffff;
 }
 
 h5 {
@@ -80,8 +80,9 @@ h5 {
 
 p {
   font-family: Avenir, sans-serif;
-  color: #ffffff;
-  font-size: 1em;
+  color: #3a4e55;
+  font-size: 1.1em;
+  font-weight: 600;
 }
 
 ul {}
@@ -99,14 +100,14 @@ a {
 
 section {
   margin: 1em auto 2em auto;
-  max-width: 50em;
+  max-width: 45em;
 }
 
 button {
   padding: .5em 1em;
   border: none;
   /* box-shadow: 1px 1px 1px grey; */
-  background-color: #3a4e55;
+  background-color: #d27c37;
   color: #f6f6f6;
   font-family: Avenir, sans-serif;
   display: block;
@@ -180,25 +181,29 @@ button {
 }
 
 #results ul li article div:nth-last-child(1) {
-  display: none;
-}
-
-#results ul li.active article div:nth-last-child(1) {
+  /* display: none; */
   display: flex;
   flex-wrap: wrap;
 }
 
-#results ul li.active article div:nth-last-child(1) article {
+
+/* 
+#results ul li.active article div:nth-last-child(1) {
+  display: flex;
+  flex-wrap: wrap;
+} */
+
+#results ul li article div:nth-last-child(1) article {
   width: 30%;
 }
 
-#results ul li.active article div:nth-last-child(1) p {
+#results ul li article div:nth-last-child(1) p {
   display: block;
   width: 100%;
   text-align: center;
 }
 
-#results ul li.active article div:nth-last-child(1) canvas {
+#results ul li article div:nth-last-child(1) canvas {
   display: block;
   text-align: center;
   margin: 0 auto;
@@ -225,9 +230,27 @@ button {
 
 @media screen and (min-width: 60em) {
   h1 {
-    font-size: 11em
+    font-size: 11vw
   }
   h2 {
-    font-size: 3.3em
+    font-size: 3.6vw
+  }
+  h3 {
+    font-size: 3.5vw;
+  }
+  h4 {
+    font-size: 2.5vw;
+  }
+  p {
+    font-size: 1.5vw;
+  }
+  button {
+    font-size: 1vw;
+  }
+  #results canvas {
+    width: 8vw;
+  }
+  main {
+    width: 70%
   }
 }
