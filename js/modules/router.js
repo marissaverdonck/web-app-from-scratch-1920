@@ -2,6 +2,7 @@ import { getUserLocation, success, error, getTimeZone } from './userLocation.js'
 import { addDistance, filterAndSortLocations, getWeather, getWeatherDetail, getValueFromFilter } from './data-helpers.js';
 import { renderSkiData, renderDetailData } from './render.js'
 import skiarea from './skiLocationApi.js'
+const filterButton = document.getElementById("filterButton")
 
 function router() {
   routie({
@@ -17,16 +18,16 @@ function router() {
 
 function startApp() {
   getUserLocation()
-    .then(x => { console.log(x); return x })
+    .then(position => { return position })
     .then(success)
     .catch(error)
     .then(
-      x => { console.log(x); return x }
+      location => { return location }
     )
     .then(
-      (x) => {
-        renderApp(x.currentLat, x.currentLon)
-        renderSkiAreas(x.currentLat, x.currentLon, skiarea)
+      (location) => {
+        renderApp(location.currentLat, location.currentLon)
+        renderSkiAreas(location.currentLat, location.currentLon, skiarea)
       }
     )
 }
@@ -51,7 +52,6 @@ function renderSkiAreas(lat, lon, skiarea) {
 function renderDetails(id, lat, lon) {
   getWeatherDetail(id, lat, lon)
     .then(weatherDetailData => {
-      console.log('Results', weatherDetailData)
       return weatherDetailData
     })
     .then((weatherDetailData) => {
@@ -59,9 +59,6 @@ function renderDetails(id, lat, lon) {
     })
 
 }
-// User input
-const filterButton = document.getElementById("filterButton")
-filterButton.addEventListener("click", renderFilterInput)
 
 function renderFilterInput() {
   const filterInput = getValueFromFilter()
@@ -78,5 +75,8 @@ function renderFilterInput() {
       renderSkiData(weatherArray)
     })
 }
+
+// User input
+filterButton.addEventListener("click", renderFilterInput)
 
 export { router }

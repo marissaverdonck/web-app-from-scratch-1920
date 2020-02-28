@@ -178,7 +178,7 @@ button {
 #results article div:nth-of-type(2) {
   display: inline;
   text-align: center;
-  margin: 0px auto;
+  margin: 0 auto 0 5em;
 }
 
 #results article div:nth-of-type(3) {
