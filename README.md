@@ -19,9 +19,7 @@
 * [License](#License)
 
 ## Concept
-A weather application with all data from ski resorts. Search nearby ski resorts to find fresh snow.
-I love to ski! When there is fresh snow in the Alps, then I want to go there immediately if only for a weekend.
-Ik ben gek op skiën! Wanneer er verse sneeuw valt in de Alpen rijd ik het liefste direct heen, al is het voor een weekendje. I look in advance for the closest area with the most snow. This is a lot of work to find out so it would be handy if I build a web app for this!
+I love to ski! When there is fresh snow in the Alps, then I want to go there immediately if only for a weekend. I look in advance for the closest area with the most snow. This is a lot of work to find out so it would be handy if I build a web app for this. This is a weather application with all data from ski resorts. Search nearby ski resorts to find fresh snow.
 
 ## Live Demo
 https://marissaverdonck.github.io/web-app-from-scratch-1920/
