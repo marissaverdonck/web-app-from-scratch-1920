@@ -125,6 +125,7 @@ Website: https://skimap.org/pages/Developers#skiArea
       },
  ```
 </details>
+
 ## How it works
 Visual representation of how the application works.
 
