@@ -1,8 +1,5 @@
 # Snow hunters
-<img width="1253" alt="Schermafbeelding 2020-02-28 om 08 19 34" src="https://user-images.githubusercontent.com/43657951/75519255-1ad83480-5a03-11ea-8c8f-69db4901fa19.png">
-
-
-Een weer app voor alle skigebieden over de wereld. Waar vind je zo dicht bij mogelijk de meeste sneeuw?
+<img width="642" alt="Schermafbeelding 2020-02-28 om 08 16 49" src="https://user-images.githubusercontent.com/43657951/75520196-41976a80-5a05-11ea-9663-a9fbef1fefb6.png">
 
 ## Table of Contents
 * [Concept](#Concept)
@@ -32,7 +29,7 @@ https://marissaverdonck.github.io/web-app-from-scratch-1920/
 ## Onderzoek
 View how I came up with this idea and see the research in the[Wiki](https://github.com/marissaverdonck/web-app-from-scratch-1920/wiki)
 
-## Installatie
+## Installation
 1. Open up your terminal
 
 2. Go to the file in your computer where you want to install the application
@@ -129,12 +126,9 @@ Website: https://skimap.org/pages/Developers#skiArea
         "_id": "1"
       },
  ```
-
-
-
-
+</details>
 ## How it works
-Visuele weergave over hoe de applicatie werkt.
+Visual representation of how the application works.
 
 ### Actor diagram
 <img width="900" alt="Schermafbeelding 2020-02-11 om 14 10 42" src="https://user-images.githubusercontent.com/43657951/74239582-69ce5c00-4cd8-11ea-8044-7c39c6c4b7ae.png">
@@ -143,32 +137,43 @@ Visuele weergave over hoe de applicatie werkt.
 
 <img width="900" alt="Schermafbeelding 2020-02-11 om 14 12 44" src="https://user-images.githubusercontent.com/43657951/74239675-a13d0880-4cd8-11ea-87dd-b4268fcf4c21.png">
 
-## Feature recuirements
-
-* Retrieve data from an API and render it in an overview page. (_[Excercises](https://github.com/cmda-minor-web/web-app-from-scratch-1920/blob/master/course/week-1.md)_,
-_[Slides](https://drive.google.com/open?id=1Rjl9xqXoKniQSRJPdkU1O5YwWC33SJK8KiV0a-H_xZU)_)
-
-
-* Design the web app. Add routes and states. Rendering detail page. (_[Excercises](https://github.com/cmda-minor-web/web-app-from-scratch-1920/blob/master/course/week-2.md)_,
-_[Slides](https://drive.google.com/open?id=1IqQeu1m0dQiSC_KCvrn8eencAgtYe7X6qT-gm0n9Bmc)_)
-
-* Manipulate data. Split code into modules. Reflect on end result. (_[Excercises](https://github.com/cmda-minor-web/web-app-from-scratch-1920/blob/master/course/week-3.md)_, 
-_[Slides](https://drive.google.com/open?id=1BSzGYNLMgtHD4HRnK7f0DgyTv4Pg3xsQwD_eYNo7v0Y)_)
-
-
-## Extra features
+## Features
+* Retrieving data from 2 API's
+* Retrieve the geolocation from the user
+* Render data to de overview page and detail page
+* Routing
+* Filter
+* Sort
+* Modules
 
 ## WishList
-* De optie om een hotel te boeken
-
+* Load more data items by clicking on the button
+* User input: sort by
+* Design the detailpage
+* Option to book a hotel with de booking.com API
+* Make more use of local storage
+* Actual snow height of the location (other API?)
 
 ## Learning goals
-* _You can add structure to your code by applying patterns. You can defend the choice for the chosen patterns_
-* _You can retrieve data, manipulate it and dynamically convert it to html elements using templating_
-* _You understand how you can work with an external API using asynchronous code_
-* _You understand how you can manage state in your application and you inform the user of state where necessary_
+I've learned a lot these days!
+* Bring data from different API's together and manipulate them
+* .map(), .filter(), .reduce()
+* Modules
+* Give a loading and error state
+* asynchronous code
+* Routing
+* Render
 
 ## Credits
+* Joost Faber
+* Laurens Aarnoudse
+* Robin Stut 
+* Guido Bouman 
+
+## Sources
+* [Youtube](https://www.youtube.com/watch?v=wPElVpR1rwA)
+* [DarkSky](https://darksky.net/dev)
+* [Developer Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
 
 ## License
 [MIT License](https://github.com/marissaverdonck/web-app-from-cratch/blob/master/license)
