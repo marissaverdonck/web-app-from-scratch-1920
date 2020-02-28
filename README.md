@@ -1,4 +1,7 @@
 # Snow hunters
+<img width="1253" alt="Schermafbeelding 2020-02-28 om 08 19 34" src="https://user-images.githubusercontent.com/43657951/75519255-1ad83480-5a03-11ea-8c8f-69db4901fa19.png">
+
+
 Een weer app voor alle skigebieden over de wereld. Waar vind je zo dicht bij mogelijk de meeste sneeuw?
 
 ## Table of Contents
@@ -19,21 +22,22 @@ Een weer app voor alle skigebieden over de wereld. Waar vind je zo dicht bij mog
 * [License](#License)
 
 ## Concept
-
-Ik ben gek op skiën! Wanneer er verse sneeuw valt in de Alpen rijd ik het liefste direct heen, al is het voor een weekendje. Van te voren zoek ik naar het dichtstbijzijnde gebied met de meeste sneeuw. Dit is veel werk om uit te zoeken dus het zou handig zijn als ik hier een webapp voor bouw!
+A weather application with all data from ski resorts. Search nearby ski resorts to find fresh snow.
+I love to ski! When there is fresh snow in the Alps, then I want to go there immediately if only for a weekend.
+Ik ben gek op skiën! Wanneer er verse sneeuw valt in de Alpen rijd ik het liefste direct heen, al is het voor een weekendje. I look in advance for the closest area with the most snow. This is a lot of work to find out so it would be handy if I build a web app for this!
 
 ## Live Demo
 https://marissaverdonck.github.io/web-app-from-scratch-1920/
 
 ## Onderzoek
-Bekijk hoe ik op dit idee gekomen ben en zie het onderzoek in de [Wiki](https://github.com/marissaverdonck/web-app-from-scratch-1920/wiki)
+View how I came up with this idea and see the research in the[Wiki](https://github.com/marissaverdonck/web-app-from-scratch-1920/wiki)
 
 ## Installatie
-1. Open de terminal
+1. Open up your terminal
 
-2. Navigeer in de CLI naar de map waar de applicatie geinstaleerd kan worden
+2. Go to the file in your computer where you want to install the application
 
-3. Type <br/>
+3. Type
 ```
 Git clone https://github.com/marissaverdonck/web-app-from-scratch-1920.git
 ```
@@ -42,12 +46,58 @@ Git clone https://github.com/marissaverdonck/web-app-from-scratch-1920.git
 ### Dark Sky weather API
 Website: https://darksky.net/dev
 
+
 <details>
     <summary>Weather data</summary>
 
-    ```json
-    data
-    ```
+```
+latitude: 52.30798332035149
+longitude: 5.237298870086647
+timezone: "Europe/Amsterdam"
+currently:
+time: 1582864905
+summary: "Clear"
+icon: "clear-night"
+precipIntensity: 0.005
+precipProbability: 0.02
+precipType: "rain"
+temperature: 2.94
+apparentTemperature: -0.85
+dewPoint: 2.56
+humidity: 0.97
+pressure: 1014
+windSpeed: 4.29
+windGust: 8.39
+windBearing: 165
+cloudCover: 0.09
+uvIndex: 0
+visibility: 16.093
+ozone: 396.6
+__proto__: Object
+hourly:
+summary: "Light rain starting this evening."
+icon: "rain"
+data: Array(49)
+0:
+time: 1582862400
+summary: "Clear"
+icon: "clear-night"
+precipIntensity: 0.0124
+precipProbability: 0.08
+precipType: "rain"
+temperature: 3.37
+apparentTemperature: -0.47
+dewPoint: 2.99
+humidity: 0.97
+pressure: 1013.6
+windSpeed: 4.56
+windGust: 9.29
+windBearing: 350
+cloudCover: 0.03
+uvIndex: 0
+visibility: 16.093
+ozone: 399.3
+```
 
 </details>
 
@@ -57,25 +107,31 @@ Website: https://skimap.org/pages/Developers#skiArea
 <details>
     <summary>Skiarea data</summary>
 
-    ```json
-    data
-    ```
+ ```
+    "skiAreas": {
+    "skiArea": [{
+        "name": {
+          "__cdata": " Smokey Mountain Ski Club "
+        },
+        "officialWebsite": {
+          "__cdata": " http://www.skismokey.ca/ "
+        },
+        "georeferencing": {
+          "_lat": "52.977947",
+          "_lng": "-66.92094"
+        },
+        "regions": {
+          "region": {
+            "_id": "335",
+            "__cdata": " Newfoundland and Labrador "
+          }
+        },
+        "_id": "1"
+      },
+ ```
 
-</details>
-
-### Google maps - Distance Matrix API
-Website: https://developers.google.com/maps/documentation/distance-matrix/intro
-
-<details>
-    <summary>Distance data</summary>
-
-    ```json
-    data
-    ```
-</details>
 
 
-## Data
 
 ## How it works
 Visuele weergave over hoe de applicatie werkt.
