@@ -42,29 +42,9 @@ function addDistance(currentLat, currentLon, skiarea) {
   return skiLocationArray;
 }
 
-
-/////////////////// User input
-
-// const filterButton = document.getElementById("filterButton")
-// filterButton.addEventListener("click", getValueFromFilter);
-
-// function getValueFromFilter(distanceArray) {
-//   const filterInputMin = document.getElementById("min-distance").value;
-//   const filterInputMax = document.getElementById("max-distance").value;
-//   filterAndSortLocations(distanceArray, filterInputMin, filterInputMax)
-// }
-
-/////////////////// User input
-
-
-
-function filterAndSortLocations(distanceArray, filterInputMin, filterInputMax) {
-  const locationArrayString = localStorage.getItem('locationArray')
-  const locationParsedArray = JSON.parse(locationArrayString)
-  const locationArray = locationParsedArray ? locationParsedArray : distanceArray;
+function filterAndSortLocations(locationArray, filterInputMin, filterInputMax) {
   const minDistance = filterInputMin ? filterInputMin : 0;
   const maxDistance = filterInputMax ? filterInputMax : 1000;
-
   const filteredAreas = locationArray.filter(function(locationArray) {
     // Because of null values in the array, caused by stringify
     const distance = (locationArray == null) ? locationArray = 'undefined' :
@@ -72,9 +52,12 @@ function filterAndSortLocations(distanceArray, filterInputMin, filterInputMax) {
       locationArray.distance = locationArray.distance
 
     const newdata = distance >= minDistance && distance <= maxDistance;
+
     return newdata
   });
+
   const filteredSortedLocationArray = filteredAreas.sort((a, b) => (a.distance - b.distance))
+
   return filteredSortedLocationArray.slice(0, 5)
 }
 
@@ -137,4 +120,14 @@ function convertUnix(unixtimestamp) {
   return time
 }
 
-export { addDistance, filterAndSortLocations, getWeather };
+//User input
+function getValueFromFilter() {
+  const DistanceArrayString = localStorage.getItem('locationArray')
+  const distanceArray = JSON.parse(DistanceArrayString)
+  const filterInputMin = document.getElementById("min-distance").value;
+  const filterInputMax = document.getElementById("max-distance").value;
+  return { distanceArray, filterInputMin, filterInputMax }
+  // filterAndSortLocations(distanceArray, filterInputMin, filterInputMax)
+}
+
+export { addDistance, filterAndSortLocations, getWeather, getValueFromFilter };

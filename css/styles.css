@@ -164,12 +164,13 @@ button {
 
 #results article div:nth-of-type(1) {
   display: inline-block;
-  width: 40vw;
+  /* width: 40vw; */
 }
 
 #results article div:nth-of-type(2) {
+  display: inline;
   text-align: center;
-  margin: 0 auto;
+  margin: 0px auto;
 }
 
 #results article div:nth-of-type(3) {
