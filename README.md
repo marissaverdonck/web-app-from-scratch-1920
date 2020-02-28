@@ -147,18 +147,18 @@ Visual representation of how the application works.
 ## WishList
 * Load more data items by clicking on the button
 * User input: sort by
-* Design the detailpage
 * Option to book a hotel with de booking.com API
 * Make more use of local storage
-* Actual snow height of the location (other API?)
+* Actual snow height of the location
+* Design the detailpage
 
 ## Learning goals
 I've learned a lot these days!
 * Bring data from different API's together and manipulate them
-* .map(), .filter(), .reduce()
+* .reduce()
 * Modules
 * Give a loading and error state
-* asynchronous code
+* Asynchronous code
 * Routing
 * Render
 
