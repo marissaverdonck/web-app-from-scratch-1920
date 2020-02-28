@@ -1,5 +1,3 @@
-// import { calculateDistance } from '/skiLocations.js';
-
 // Get the location from the user
 const cors = 'https://cors-anywhere.herokuapp.com/'
 const url = 'https://api.darksky.net/forecast/'
@@ -43,36 +41,34 @@ function error() {
 
 //Get the location name from DarkSky
 function getTimeZone(currentLat, currentLon) {
-  //   const userLocation = getUserLocation()
 
   let data = new Promise((resolve, reject) => {
-      fetch(`${cors}${url}${key}/${currentLat},${currentLon}${units}`)
-        .then((response) => {
-          console.log(response)
-          return response.json();
-        })
-        .then((userTime) => {
-          console.log(userTime)
-            // Set the name of the user location
-          userLocation.textContent = userTime.timezone
-            //   calculateDistance(currentLat, currentLon)
-          return userTime.timezone
-        })
-        .then((userTimezone) => {
-          userLocation.textContent = userTimezone;
-          const currentLatLong = { currentLat: currentLat, currentLon: currentLon }
-          resolve(currentLatLong)
-        })
-        .catch((error) => {
-          console.log(error)
-          userLocation.textContent = error;
-        })
-    })
-    //   data.then(x => { console.log(x) })
+    fetch(`${cors}${url}${key}/${currentLat},${currentLon}${units}`)
+      .then((response) => {
+        console.log(response)
+        return response.json();
+      })
+      .then((userTime) => {
+        console.log(userTime)
+          // Set the name of the user location
+        userLocation.textContent = userTime.timezone
+          //   calculateDistance(currentLat, currentLon)
+        return userTime.timezone
+      })
+      .then((userTimezone) => {
+        userLocation.textContent = userTimezone;
+        const currentLatLong = { currentLat: currentLat, currentLon: currentLon }
+        resolve(currentLatLong)
+      })
+      .catch((error) => {
+        console.log(error)
+        userLocation.textContent = error;
+      })
+  })
   return data
 }
 
-// }
+
 window.addEventListener("load", getUserLocation)
 
 export { getUserLocation, getTimeZone, success, error };

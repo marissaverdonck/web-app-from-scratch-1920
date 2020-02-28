@@ -114,6 +114,10 @@ button {
   margin: 1em 0;
 }
 
+.off {
+  display: none!important
+}
+
 #location h3 {
   margin: 0 0 .5em 0;
 }
@@ -124,6 +128,10 @@ button {
 
 #location p {
   display: inline;
+}
+
+#results article:nth-of-type(1) {
+  display: block;
 }
 
 #results article {

@@ -1,7 +1,6 @@
 import { getUserLocation, getTimeZone, success, error } from './userLocation.js';
 import skiarea from './skiLocationApi.js'
 
-
 //bron: http://www.movable-type.co.uk/scripts/latlong.html
 function addDistance(currentLat, currentLon, skiarea) {
   console.log(skiarea)
@@ -103,6 +102,72 @@ async function getWeather(filterdSortedLocations) {
   return data
 }
 
+async function getWeatherDetail(id, latitude, longitude) {
+  const cors = 'https://cors-anywhere.herokuapp.com/'
+  const url = 'https://api.darksky.net/forecast/'
+  const key = '43d7f14e28e4ad05109359319da1a156'
+  const key2 = '6b0215f3cade32440e76bd5a8c70e909'
+  const key3 = '41b9df401599f007aff98cfa0c66811d'
+    // units is voor celsius en km
+  const units = '?units=si'
+
+  const lat = latitude.slice(5)
+  const lon = longitude.slice(5)
+  const dataArray = []
+    // const weatherArrayPromises = filterdSortedLocations.map(cur =>
+  const data = await fetch(`${cors}${url}${key}/${lat},${lon}${units}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((weatherData) => {
+      console.log(weatherData)
+      dataArray.push({
+        day1: convertUnix(weatherData.daily.data[0].time),
+        day1sum: weatherData.daily.data[0].summary,
+        day1temp: weatherData.daily.data[0].temperatureLow,
+        day1precip: weatherData.daily.data[0].precipType,
+        day1precipInt: weatherData.daily.data[0].precipIntensity,
+
+        day2: convertUnix(weatherData.daily.data[1].time),
+        day2sum: weatherData.daily.data[1].summary,
+        day2temp: weatherData.daily.data[1].temperatureLow,
+        day2precip: weatherData.daily.data[1].precipType,
+        day2precipInt: weatherData.daily.data[1].precipIntensity,
+
+        day3: convertUnix(weatherData.daily.data[2].time),
+        day3sum: weatherData.daily.data[2].summary,
+        day3temp: weatherData.daily.data[2].temperatureLow,
+        day3precip: weatherData.daily.data[2].precipType,
+        day3precipInt: weatherData.daily.data[2].precipIntensity,
+
+        day4: convertUnix(weatherData.daily.data[3].time),
+        day4sum: weatherData.daily.data[3].summary,
+        day4temp: weatherData.daily.data[3].temperatureLow,
+        day4precip: weatherData.daily.data[3].precipType,
+        dayprecipInt: weatherData.daily.data[3].precipIntensity,
+
+        day5: convertUnix(weatherData.daily.data[4].time),
+        day5sum: weatherData.daily.data[4].summary,
+        day5temp: weatherData.daily.data[4].temperatureLow,
+        day5precip: weatherData.daily.data[4].precipType,
+        day5precipInt: weatherData.daily.data[4].precipIntensity,
+
+        day6: convertUnix(weatherData.daily.data[5].time),
+        day6sum: weatherData.daily.data[5].summary,
+        day6temp: weatherData.daily.data[5].temperatureLow,
+        day6precip: weatherData.daily.data[5].precipType,
+        day6precipInt: weatherData.daily.data[5].precipIntensity,
+
+        day7: convertUnix(weatherData.daily.data[6].time),
+        day7sum: weatherData.daily.data[6].summary,
+        day7temp: weatherData.daily.data[6].temperatureLow,
+        day7precip: weatherData.daily.data[6].precipType,
+        day7precipInt: weatherData.daily.data[6].precipIntensity,
+      })
+    })
+  return dataArray
+}
+
 // Set unix to Time
 // bron: https://makitweb.com/convert-unix-timestamp-to-date-time-with-javascript/
 function convertUnix(unixtimestamp) {
@@ -116,7 +181,7 @@ function convertUnix(unixtimestamp) {
   const seconds = "0" + date.getSeconds();
   // Display date time in MM-dd-yyyy h:m:s format
   const convdataTime = month + '-' + day + '-' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-  const time = hours + ':' + minutes.substr(-2);
+  const time = month + ' ' + day + ', ' + hours + ':' + minutes.substr(-2);
   return time
 }
 
@@ -130,4 +195,4 @@ function getValueFromFilter() {
   // filterAndSortLocations(distanceArray, filterInputMin, filterInputMax)
 }
 
-export { addDistance, filterAndSortLocations, getWeather, getValueFromFilter };
+export { addDistance, filterAndSortLocations, getWeather, getValueFromFilter, getWeatherDetail };
